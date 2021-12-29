@@ -44,6 +44,8 @@ function query(filterBy = null) {
     const mails = _loadMailsFormStorage()
     if (!filterBy) return Promise.resolve(mails)
     const filteredMails = _getFilteredMails(mails, filterBy)
+    console.log('filteredMails:', filteredMails);
+
     return Promise.resolve(filteredMails)
 
 }
@@ -108,7 +110,12 @@ function _createDemoMails() {
 }
 
 function _getFilteredMails(mails, filterBy) {
-
+    let { from, to, date } = filterBy
+    from = from ? from : null
+    to = to ? to : null
+    return mails.filter(mail => {
+        return mail.to.includes(to) && mail.from.includes(from)
+    })
 }
 
 function _savaMailsToStorage(mails) {

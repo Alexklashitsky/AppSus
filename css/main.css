@@ -1,13 +1,31 @@
-@import './cmps/app-header.css';
+/* BASE */
 @import './parts/helpers.css';
+@import '/css/parts/base.css';
 
 
 
-*{
-    box-sizing: border-box;
-}
+/* CMPS */
 
-body{
-    margin: 0;
-   
-}
+
+@import './cmps/app-header.css';
+
+/* APPS */
+
+/* KEEP */
+
+/* KEEP  CMPS */
+@import '/css/apps/keep/cmps/NotePreview.css';
+
+/* KEEP PAGES */
+
+/* MAIL */
+
+/* MAIL CMPS */
+@import '/css/apps/mail/cmps/MailPreview.css';
+
+/* MAIL PAGES */
+
+
+
+
+

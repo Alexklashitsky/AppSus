@@ -4,8 +4,10 @@ export function MailPreview({ mail }) {
     return (
         <Link className="clean-link" to={`/mail/${mail.id}`}>
             <article className="mail-preview">
-                <p>{mail.from}</p>
-                <p>{mail.subject}</p>
+                <div className="from">{mail.from}</div>
+                <div className="subject">{mail.subject}</div>
+
+
             </article>
         </Link>
 
