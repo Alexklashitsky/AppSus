@@ -6,3 +6,11 @@
 .flex{
 display: flex;
 }
+
+.icon{
+    height: 1rem;
+    width: 1rem;
+    display: inline;
+    margin: 2 px;
+    /* padding: 5px; */
+}

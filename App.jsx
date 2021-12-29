@@ -1,6 +1,7 @@
 import { AppHeader } from "./js/cmps/AppHeader.jsx";
 import { MisterMail } from "./js/pages/MisterMail.jsx";
 import { MissKeep } from "./js/pages/MissKeep.jsx";
+import { MailDetails } from "./js/pages/MailDetails.jsx";
 
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch } = ReactRouterDOM;
@@ -11,10 +12,10 @@ export function App() {
         <AppHeader />
         <main>
           <Switch>
-            
+            <Route component={MailDetails} path="/mail/:mailId" />
             <Route component={MisterMail} path="/mail" />
             <Route component={MissKeep} path="/keep" />
-            
+
           </Switch>
         </main>
       </section>

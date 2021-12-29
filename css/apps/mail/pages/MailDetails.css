@@ -1,0 +1,29 @@
+.mail-details img{
+    margin-top: 1.4rem;
+   
+}
+.mail-details .heder {
+    /* border: springgreen solid; */
+    display: flex;
+    justify-content: space-between
+    
+}
+
+.mail-details .modal{
+    height: 16rem;
+    width: 10rem;
+    border: tomato solid;
+    float: right;
+    position:absolute;
+    bottom: 12.5rem; 
+    right: -100%;
+
+    
+    /* visibility: hidden */
+}
+.mail-details .modal.shown{
+    right:  0px;
+
+   
+    
+}

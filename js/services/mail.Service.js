@@ -3,7 +3,8 @@ import { storageService } from "./storage.service.js"
 
 export const mailService = {
     creteMails,
-    query
+    query,
+    getMailById
 }
 
 const KEY = 'mailDB'
@@ -20,6 +21,7 @@ function _createMail(from, subject, body, sentAt, to) {
         from,
         subject,
         body,
+        bodyPreview: body.slice(0, 25),
         isRead: false,
         sentAt,
         to,
@@ -41,7 +43,9 @@ function creteMails() {
 
 }
 function query(filterBy = null) {
+    console.log('query');
     const mails = _loadMailsFormStorage()
+    if (!mails) creteMails()
     if (!filterBy) return Promise.resolve(mails)
     const filteredMails = _getFilteredMails(mails, filterBy)
     console.log('filteredMails:', filteredMails);
@@ -79,6 +83,15 @@ function deleteMail(mailId) {
     mails = mails.filter(mail => mail.id !== mailId)
     _savaMailsToStorage(mails);
     return Promise.resolve()
+}
+
+function getMailById(mailId) {
+    const mails = _loadMailsFormStorage()
+    var mail = mails.find(function (mail) {
+        return mailId === mail.id
+    })
+    return Promise.resolve(mail)
+
 }
 
 function _createDemoMails() {
