@@ -8,9 +8,9 @@ export function AppHeader() {
                 AppSuss
             </h1>
             <section className="main-nav">
-                <NavLink>home</NavLink>
-                <NavLink to="/mail" >mail</NavLink>
-                <NavLink to="/keep" >keeper</NavLink>
+                <NavLink className="clean-link">home</NavLink>
+                <NavLink className="clean-link" to="/mail" >Mail</NavLink>
+                <NavLink className="clean-link" to="/keep" >Keep</NavLink>
                 {/* <NavLink>misBooks</NavLink> */}
 
             </section>
