@@ -1,5 +1,6 @@
 import { MailsList } from "../cmps/mailList.jsx"
 import { mailService } from "../services/mail.Service.js"
+import { eventBusService } from "../services/event-bus.service"
 const { Link } = ReactRouterDOM
 export class MisterMail extends React.Component {
 
@@ -31,7 +32,7 @@ export class MisterMail extends React.Component {
         return (
             <section>
                 <table className="mail-table">
-                    <MailsList mails={this.state.mails} />
+                    {/* <MailsList mails={this.state.mails} /> */}
 
 
                 </table>
