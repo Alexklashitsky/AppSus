@@ -5,7 +5,9 @@ const { Link } = ReactRouterDOM
 export class MailDetails extends React.Component {
 
     state = {
-        mail: null
+        mail: null,
+        show: false
+
     }
     componentDidMount() {
         this.loadMail()
@@ -41,19 +43,38 @@ export class MailDetails extends React.Component {
             this.onGoBack()
         })
     }
+    toggleModal = () => {
+        console.log(this.state.show);
+        if (!this.state.show) {
+            this.setState({ show: true });
+            console.log(this.state.show);
+
+        }
+    };
+
 
     render() {
         const { mail } = this.state
         if (!mail) return <div className="error">error</div>
         return (
-            <section>
-                <h1>{mail.subject}</h1>
-                <h4>{mail.from}</h4>
-                <p>{mail.body}</p>
-            </section>
+            <section className="mail-details">
+                <div className="heder">
+                    <h1>{mail.subject}</h1>
+                    <img className="burger icon" onClick={this.toggleModal} src="./img/icons/3dots.png" />
+
+
+                </div>
+                <div className="main">
+                    <h4>{mail.from}</h4>
+                    <p>{mail.body}</p>
+                </div>
+
+                <div className={"modal" + " " + `${this.state.show === false ? " " : "shown"}`} >hghghg</div>
+
+            </section >
         )
 
-
+        // + (!this.state.show && "shown")
 
 
 
@@ -63,3 +84,6 @@ export class MailDetails extends React.Component {
 
 }
 
+"modal"
+
+// + (this.state.show && "shown")
