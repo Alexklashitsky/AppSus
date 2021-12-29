@@ -48,8 +48,9 @@ export class MailDetails extends React.Component {
         if (!this.state.show) {
             this.setState({ show: true });
             console.log(this.state.show);
+        } else this.setState({ show: false })
 
-        }
+
     };
 
 
