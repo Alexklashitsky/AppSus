@@ -3,3 +3,6 @@
     color: inherit;
     cursor: pointer;
 }
+.flex{
+display: flex;
+}
