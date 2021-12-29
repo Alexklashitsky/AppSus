@@ -4,10 +4,8 @@ import { NotePreview } from "../apps/keep/cmps/note-preview.jsx";
 export class MissKeep extends React.Component {
   state = {
     note: {
-      type: "note-txt",
-      info: {
-        txt: "",
-      },
+      type: "txt",
+      info: {},
     },
     notes: null,
   };
@@ -30,46 +28,70 @@ export class MissKeep extends React.Component {
         info: { ...prevState.note.info, [field]: value },
       },
     }));
-    console.log(this.state.note.info);
   };
 
   addNote = () => {
-    noteService.createNote(this.state.note);
+    noteService
+      .createNote(this.state.note)
+      .then(() =>
+        this.setState((prevState) => ({
+          note: { ...prevState.note, info: {} },
+        }))
+      );
+    this.loadNotes();
   };
 
   changeType = (type) => {
     this.setState((prevState) => ({ note: { ...prevState.note, type: type } }));
-    
+    console.log(this.state.note.type);
   };
 
   noteHead = () => {
+    const { type } = this.state.note;
     return (
       <section className="note-add">
-        <textarea
-          name="txt"
-          id="text"
-          cols="80"
-          rows="4"
-          onChange={this.handleChange}
-        ></textarea>
-        <button onClick={this.addNote}>Submit</button>
+        <form >
+          <textarea
+            name={type}
+            id="text"
+            cols="80"
+            rows="4"
+            onChange={this.handleChange}
+          ></textarea>
+          <button onClick={this.addNote}>Add note</button>
+        </form>
         <div className="note-type">
-          <button onClick={() => this.changeType("note-txt")}>Text</button>
-          <button onClick={() => this.changeType("note-todo")}>Todos</button>
-          <button onClick={() => this.changeType("note-img")}>Image</button>
+          <button onClick={() => this.changeType("txt")}>Text</button>
+          <button onClick={() => this.changeType("todos")}>Todos</button>
+          <button onClick={() => this.changeType("img")}>Image</button>
         </div>
       </section>
     );
   };
 
+  onDeleteNote = (id) =>{
+      noteService.deleteNote(id);
+      this.loadNotes();
+
+  }
+
   getNotes = () => {
     const { notes } = this.state;
-    return notes.map((note) => <NotePreview note={note} />);
+    return notes.map(note => {
+       return  (<div key={note.id} style={note.style} className="note">
+        <NotePreview note={note} />
+        <div className='note-edit'>
+            <button onClick={()=>this.onDeleteNote(note.id)}>🗑️</button>
+        </div>
+        </div>)
+    })
   };
 
   render() {
+    console.log(123);
     const { notes } = this.state;
-    
+    console.log(this.state.note.info);
+
     if (!notes || notes.length === 0) {
       return (
         <React.Fragment>
