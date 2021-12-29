@@ -1,0 +1,17 @@
+
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(189, 180, 180);
+    padding-inline-start: 0.5rem;
+    padding-inline-end: 0.5rem;
+}
+
+.main-nav{
+    display: flex;
+    justify-content: space-between;
+    min-width: 40%;
+    align-items: center;
+
+    
+}
