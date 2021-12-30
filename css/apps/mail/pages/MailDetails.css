@@ -12,10 +12,11 @@
 .mail-details .modal{
     height: 16rem;
     width: 10rem;
-    border: tomato solid;
+    flex-direction: column;
+    /* border: tomato solid; */
     float: right;
     position:absolute;
-    bottom: 12.5rem; 
+    top: 15%; 
     right: -100%;
 
     

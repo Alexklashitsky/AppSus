@@ -1,7 +1,7 @@
 import { AppHeader } from "./js/cmps/AppHeader.jsx";
-import { MisterMail } from "./js/pages/MisterMail.jsx";
+import { MisterMail } from "./js/apps/mail/pages/MisterMail.jsx";
 import { MissKeep } from "./js/pages/MissKeep.jsx";
-import { MailDetails } from "./js/pages/MailDetails.jsx";
+import { MailDetails } from "./js/apps/mail/pages/MailDetails.jsx";
 
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch } = ReactRouterDOM;

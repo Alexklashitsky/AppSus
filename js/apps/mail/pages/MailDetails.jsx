@@ -1,4 +1,5 @@
-import { mailService } from "../services/mail.Service.js"
+import { MailFilter } from "../cmps/MailFilter.jsx"
+import { mailService } from "../../../services/mail.Service.js"
 
 const { Link } = ReactRouterDOM
 
@@ -58,7 +59,9 @@ export class MailDetails extends React.Component {
         const { mail } = this.state
         if (!mail) return <div className="error">error</div>
         return (
+
             <section className="mail-details">
+                <MailFilter onSetFilter={this.onSetFilter} />
                 <div className="heder">
                     <h1>{mail.subject}</h1>
                     <img className="burger icon" onClick={this.toggleModal} src="./img/icons/3dots.png" />
@@ -70,7 +73,16 @@ export class MailDetails extends React.Component {
                     <p>{mail.body}</p>
                 </div>
 
-                <div className={"modal" + " " + `${this.state.show === false ? " " : "shown"}`} >hghghg</div>
+                <div className={"modal" + " " + "flex " + `${this.state.show === false ? " " : "shown"}`} >
+                    <button className="btn" onClick={this.replay} >replay</button>
+                    <button className="btn" onClick={this.replay} >forward</button>
+                    <button className="btn" onClick={this.replay} >keep it!</button>
+                    <button className="btn" onClick={this.replay} >move to trash</button>
+                    <button className="btn dis" >print</button>
+                    <button className="btn dis" >archive</button>
+                    <button className="btn dis" >move to junk</button>
+
+                </div>
 
             </section >
         )
