@@ -25,6 +25,8 @@ function _createMail(from, subject, body, sentAt, to) {
         isRead: false,
         sentAt,
         to,
+        isInTrash: false,
+        currentFolder: 'inbox'
     }
     return mail
 }

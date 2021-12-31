@@ -1,5 +1,7 @@
-import { MailsList } from "../cmps/mailList.jsx"
-import { mailService } from "../services/mail.Service.js"
+import { MailFolders } from "../cmps/MailFolders.jsx"
+import { MailFilter } from "../cmps/MailFilter.jsx"
+import { MailsList } from "../cmps/MailList.jsx"
+import { mailService } from "../../../services/mail.Service.js"
 // import { eventBusService } from "../services/event-bus.service"
 const { Link } = ReactRouterDOM
 export class MisterMail extends React.Component {
@@ -46,7 +48,8 @@ export class MisterMail extends React.Component {
             <section>
 
 
-
+                <MailFilter onSetFilter={this.onSetFilter} />
+                <MailFolders />
                 <MailsList mails={mails} />
 
 
