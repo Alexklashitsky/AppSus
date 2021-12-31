@@ -1,0 +1,16 @@
+.mister-mail{
+    /* border: springgreen solid; */
+
+}
+
+.mister-mail .search-bar{
+    padding-bottom: 5%;
+}
+
+.mister-mail .mail-folders{
+   padding-top: 2%;
+  
+}
+.mister-mail .btn{
+    width: 5rem;
+}

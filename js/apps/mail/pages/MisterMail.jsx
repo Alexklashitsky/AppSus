@@ -1,3 +1,5 @@
+import { eventBusService } from "../../../services/event-bus.service.js"
+import { Compose } from "../cmps/compose.jsx"
 import { MailFolders } from "../cmps/MailFolders.jsx"
 import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailsList } from "../cmps/MailList.jsx"
@@ -8,13 +10,16 @@ export class MisterMail extends React.Component {
 
     state = {
         mails: null,
-        mailFolder: 'inbox',
-        filterBy: null
+        folder: 'inbox',
+        filterBy: null,
+        isModalShown: false
 
     }
     componentDidMount() {
 
         this.loadMails()
+        // eventBusService.on('open-folder', folder)
+        // eventBusService.on('open-modal', onOpenModal())
 
 
 
@@ -28,6 +33,11 @@ export class MisterMail extends React.Component {
             this.setState({ mails })
         })
     }
+    onSetFilter = (filterBy) => {
+        console.log(filterBy);
+        this.setState({ filterBy }, this.loadMails)
+
+    }
 
     // get mailsToDisplay() {
     //     const { mails } = this.state.mails
@@ -35,24 +45,60 @@ export class MisterMail extends React.Component {
     //     return mails
     // }
 
+    setFolder = (folder) => {
+        this.setState({ folder }, this.loadMails())
+        console.log('this.state:', this.state);
+        this.loadMails()
+    }
+
+    onOpenModal() {
+
+        this.setState({ isModalShown: true })
+        eventBusService.emit('open modal', true)
+        // console.log('this.setState:', this.State.isModalShown);
+
+
+
+    }
+
+    onSentMail = (mail) => {
+        // console.log('mail:', mail);
+        mailService.sendMail(mail)
+
+
+    }
+
+    componentWillUnmount() {
+        console.log('main unmount');
+    }
+
     render() {
         const { mails } = this.state
-        console.log('mails:', mails);
+        // console.log('mails:', mails);
 
 
-        console.log('this.state.mails:', this.state.mails)
+        // console.log('this.state.mails:', this.state.mails)
         if (!mails) return <h2> empty</h2>
         return (
 
 
-            <section>
+            <section className="mister-mail">
+
+                <div className="search-bar flex" >
+                    <MailFilter onSetFilter={this.onSetFilter} />
+                    <button className="compose" onClick={() => this.onOpenModal()} >compose</button>
+                </div>
 
 
-                <MailFilter onSetFilter={this.onSetFilter} />
-                <MailFolders />
-                <MailsList mails={mails} />
+                <main className="main flex">
+                    <div className="mail-folders">
+                        <  MailFolders setFolder={this.setFolder} />
+                    </div>
 
+                    <MailsList mails={mails} />
+                    <Compose onSentMail={this.onSentMail} />
 
+                </main>
 
 
             </section>
