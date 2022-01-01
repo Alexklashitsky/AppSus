@@ -30,9 +30,9 @@ function sendMail(mail) {
     const mails = _loadMailsFormStorage()
 
     const sentMail = _createMail(loggedInUser.fullName, mail.subject, mail.body, Date.now(), mail.to, 'sent items')
-    console.log('sentMail:', sentMail);
+    // console.log('sentMail:', sentMail);
     mails.push(sentMail)
-    console.log('mails:', mails);
+    // console.log('mails:', mails);
     _savaMailsToStorage(mails)
 
 
@@ -89,11 +89,11 @@ function creteMails() {
 
 }
 function query(filterBy = null) {
-    console.log('query');
+    // console.log('query');
     let mails = _loadMailsFormStorage() || creteMails()
     if (!filterBy) return Promise.resolve(mails)
     const filteredMails = _getFilteredMails(mails, filterBy)
-    console.log('filteredMails:', filteredMails);
+    // console.log('filteredMails:', filteredMails);
 
     return Promise.resolve(filteredMails)
 
@@ -188,15 +188,15 @@ function amountOfMailCurrFolder() {
 }
 
 function _getFilteredMails(mails, filterBy) {
-    console.log('filterBy:', filterBy);
+    // console.log('filterBy:', filterBy);
 
     let folder = filterBy.folder
     let from = filterBy.search
     let to = from
     let subject = from
-    console.log('subject:', subject);
+    // console.log('subject:', subject);
 
-    console.log('folder:', folder);
+    // console.log('folder:', folder);
 
 
 
@@ -206,14 +206,14 @@ function _getFilteredMails(mails, filterBy) {
     // folder = folder ? folder : null
     let test
     return mails.filter(mail => {
-        console.log('mail.subject:', mail.subject);
+        // console.log('mail.subject:', mail.subject);
 
         return (mail.subject.includes(subject) || mail.to.includes(to) || mail.from.includes(from)) && mail.currentFolder === gFolder
     })
 }
 
 function getFolder() {
-    console.log('gFolder:', gFolder);
+    // console.log('gFolder:', gFolder);
 
     return gFolder
 }
@@ -231,7 +231,7 @@ function setFolder(folder) {
 
 
     gFolder = folder
-    console.log('gFolder:', gFolder);
+    // console.log('gFolder:', gFolder);
 
 
 
@@ -252,7 +252,7 @@ function moveToFolder(folder, id) {
     })
     mails[mailIdx].currentFolder = folder
     _savaMailsToStorage(mails)
-    console.log('mailIdx:', mailIdx);
+    // console.log('mailIdx:', mailIdx);
 
 
 

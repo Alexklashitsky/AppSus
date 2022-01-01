@@ -20,7 +20,7 @@ export class MailDetails extends React.Component {
     componentDidMount() {
         this.loadMail()
         var trash = mailService.getTrash()
-        console.log('trash:', trash);
+        // console.log('trash:', trash);
 
 
 
@@ -39,7 +39,7 @@ export class MailDetails extends React.Component {
 
     loadMail = () => {
         const { mailId } = this.props.match.params
-        console.log('mailId:', mailId);
+        // console.log('mailId:', mailId);
 
 
         mailService.getMailById(mailId).then(mail => {
@@ -60,10 +60,10 @@ export class MailDetails extends React.Component {
         })
     }
     toggleModal = () => {
-        console.log(this.state.show);
+        // console.log(this.state.show);
         if (!this.state.show) {
             this.setState({ show: true });
-            console.log(this.state.show);
+            // console.log(this.state.show);
         } else this.setState({ show: false })
 
 
@@ -71,7 +71,7 @@ export class MailDetails extends React.Component {
 
 
     onOpenComposeModal() {
-        console.log('gg:');
+        // console.log('gg:');
 
         eventBusService.emit('open modal', true)
     }
@@ -98,7 +98,7 @@ export class MailDetails extends React.Component {
         const id = this.getId()
         // const { id } = this.state.mail
         eventBusService.emit('replay', id)
-        console.log('id:', id);
+        // console.log('id:', id);
     }
 
     onForward = () => {

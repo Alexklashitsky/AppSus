@@ -8,13 +8,13 @@ export class MailFolders extends React.Component {
 
     onClickFolder = (folder) => {
         // eventBusService.emit('open-folder', folder)
-        console.log('hi');
-        console.log('date:', folder);
+        // console.log('hi');
+        // console.log('date:', folder);
         mailService.setFolder(folder)
         this.props.setFolder(folder)
 
         if (folder === 'trash') {
-            console.log('trash');
+            // console.log('trash');
             eventBusService.emit('open-trash', true)
 
         }

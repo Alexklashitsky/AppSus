@@ -16,18 +16,18 @@ export class MailPreviewForTrash extends React.Component {
 
     loadMails() {
         const mails = mailService.getTrash()
-        console.log('mails:', mails);
+        // console.log('mails:', mails);
 
 
         this.setState(({ mails }),
 
-            () => console.log('this.state:', this.state))
-        console.log('this.state:', this.state);
+            // () => console.log('this.state:', this.state))
+        // console.log('this.state:', this.state);
 
     }
 
     onDeleteMail(mailId) {
-        console.log('mailId:', mailId);
+        // console.log('mailId:', mailId);
         mailService.deleteMail(mailId)
         this.loadMails()
 
@@ -39,13 +39,13 @@ export class MailPreviewForTrash extends React.Component {
     render() {
 
         const mails = this.state.mails
-        console.log('mails:', mails);
+        // console.log('mails:', mails);
 
 
         if (!mails) return 'ff'
         return (
             mails.map((mail) => {
-                console.log('mail:', mail)
+                // console.log('mail:', mail)
                 return <div className="trash-preview ">
                     <Link className="clean-link" to={`/mail/${mail.id}`}>
                         <div className="form" >{mail.from}</div>

@@ -17,15 +17,12 @@ export class Compose extends React.Component {
 
     handleChange = ({ target }) => {
         const field = target.name
-        console.log('field:', field);
 
         const value = target.value
-        console.log('value:', value);
 
         // this.setState(() => ({ mail: { [field]: value } }))
 
         this.setState((prevState) => ({ mail: { ...prevState.mail, [field]: value } }), () => {
-            console.log('this.state:', this.state);
 
             //     // this.props.onSetFilter(this.state.filterBy)
         })
@@ -52,7 +49,6 @@ export class Compose extends React.Component {
 
         eventBusService.on('forward', (id) => {
             this.openForward(id)
-            // console.log('for');
 
         })
 
@@ -121,13 +117,11 @@ export class Compose extends React.Component {
         // })
 
         this.setState({ isModalOpen: true })
-        console.log(selectedMail);
         // })
 
     }
 
     openForward(id) {
-        console.log('id:', id);
         let selectedMail = mailService.getMailByIdN(id)
         this.setState({ mail: { to: "", subject: selectedMail.subject, body: selectedMail.body } })
         this.setState({ isModalOpen: true })
@@ -141,7 +135,6 @@ export class Compose extends React.Component {
     componentWillUnmount() {
         // this.removeEventBus()
         // window.removeEventListener('open modal', CustomEvent)
-        console.log('unmount');
     }
 
     render() {
