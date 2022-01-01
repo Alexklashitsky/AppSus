@@ -134,6 +134,7 @@ export class Compose extends React.Component {
     }
 
     onDraft(id) {
+        this.closeModal()
 
     }
 
@@ -151,7 +152,7 @@ export class Compose extends React.Component {
             <section className={"compose-modal" + "  " + `${this.state.isModalOpen ? " show" : ""}`} >
                 <header>
                     <h3 className="newMsg" >New massage</h3>
-                    <button onClick={() => this.closeModal()} className="close-modal">X</button>
+                    <button onClick={() => this.onDraft()} className="close-modal">X</button>
                 </header>
                 <div className="subheader flex">
                     <form

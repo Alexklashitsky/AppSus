@@ -1,6 +1,6 @@
 /* BASE */
 @import './parts/helpers.css';
-@import '/css/parts/base.css';
+@import './css/parts/base.css';
 
 
 
@@ -15,12 +15,12 @@
 /* KEEP */
 
 /* KEEP  CMPS */
-@import '/css/apps/keep/cmps/NotePreview.css';
-@import '/css/apps/mail/cmps/MailList.css';
+@import '../css/apps/keep/cmps/NotePreview.css';
+@import '../css/apps/mail/cmps/MailList.css';
 
 /* KEEP PAGES */
 
-@import '/css/apps/keep/cmps/MissKeep.css';
+@import '../css/apps/keep/cmps/MissKeep.css';
 
 /* MAIL */
 
