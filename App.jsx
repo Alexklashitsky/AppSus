@@ -17,7 +17,7 @@ export function App() {
             <Route component={MailDetails} path="/mail/:mailId" />
             <Route component={MisterMail} path="/mail" />
             <Route component={MissKeep} path="/keep" />
-            <Route component={HomePage} path="/home" />
+            <Route component={HomePage} path="/" />
 
           </Switch>
         </main>
