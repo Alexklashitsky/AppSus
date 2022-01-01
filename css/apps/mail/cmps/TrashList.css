@@ -1,14 +1,11 @@
-.trash-list{
-    flex-direction: column;
-
-}
 
 .trash-list{
     /* border: teal dotted; */
-    flex-direction: column;
+    flex-direction: row;
     padding-left: 10%;
     margin-top: 5%;
     width: 70%;
+
 
 }
 
@@ -16,17 +13,19 @@
     /* border: springgreen solid; */
     flex-direction: row;
     margin: 0;
-    padding: 0;
-    padding-bottom: 2rem;
+    padding: 10px;
+    
+  
+    
     
 }
 
 .trash-preview .from{
-    padding-right: 2rem;
-    padding-left: 2rem;
+    /* padding-right: 2rem;
+    padding-left: 2rem; */
 }
 .trash-preview .bodyPreview{
     
-    padding-left: 3rem;
+    /* padding-left: 3rem; */
 }
 

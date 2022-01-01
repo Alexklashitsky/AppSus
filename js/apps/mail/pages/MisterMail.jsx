@@ -125,7 +125,7 @@ export class MisterMail extends React.Component {
                     <div className="search-bar flex" >
                         <MailFilter onSetFilter={this.onSetFilter} />
                         <button className="compose" onClick={() => this.onOpenModal()} >compose</button>
-                        <div className="amount of mails">amount of mails: {this.mailCount()} </div>
+                        <div className="amount-of-mails">amount of mails: {this.mailCount()} </div>
                     </div>
 
                     <main className="main flex">
@@ -142,7 +142,7 @@ export class MisterMail extends React.Component {
                 <div className="search-bar flex" >
                     <MailFilter onSetFilter={this.onSetFilter} />
                     <button className="compose" onClick={() => this.onOpenModal()} >compose</button>
-                    <div className="amount of mails">amout of mails: {this.mailCount()} </div>
+                    <div className="amount-of-mails">amout of mails: {this.mailCount()} </div>
 
                 </div>
                 <main className="main flex">
