@@ -22,8 +22,8 @@ function checkNote(note) {
       return (
         <React.Fragment>
           <h2>{note.info.title}</h2>
-          {note.info.todos.map((todo) => {
-            return <h3>{todo}</h3>;
+          {note.info.todos.map((todo,idx) => {
+            return <h3 key = {idx}>{todo}</h3>;
           })}
         </React.Fragment>
       );
@@ -37,7 +37,9 @@ function checkNote(note) {
 
               <iframe width="250" height="200" src={`https://www.youtube.com/embed/${id}`} frameBorder="0"></iframe>
           </div>
-      )
+      );
+      default:
+        return null;
   }
 }
 

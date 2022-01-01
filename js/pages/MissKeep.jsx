@@ -86,7 +86,6 @@ export class MissKeep extends React.Component {
     const { type } = this.state.note;
     const value = this.state.note.info[type];
     let title = type !== "txt" ? this.state.note.info.title : "";
-    console.log(value);
     return (
       <section className="note-add">
         <form onSubmit={this.addNote}>
@@ -145,6 +144,7 @@ export class MissKeep extends React.Component {
 
   handleKey = ({ key }) => {
     var { noteEdit } = this.state;
+    console.log(noteEdit);
 
     if (key.length === 1) {
       noteEdit += key;
@@ -158,6 +158,8 @@ export class MissKeep extends React.Component {
   };
 
   handleFocus = (note) => {
+    if(note.type === 'src' || note.type === 'img') return;
+    console.log(123);
     const noteEdit =
       note.type === "txt" ? note.info.txt : note.info.todos.toString();
     this.setState({ noteEdit });
@@ -165,26 +167,28 @@ export class MissKeep extends React.Component {
 
   onSaveNote = (note) => {
     let type = note.type;
-    note.info[type] = this.state.noteEdit;
+    if(type === 'txt' || type === 'todos') note.info[type] = this.state.noteEdit;
+    if(type === 'todos') note.info[type] = note.info[type].split(',');
+    // else note.info[type] = this.state.noteEdit;
     noteService.saveNote(note);
   };
 
   onChangecolor = (note, color) => {
     note.style = { backgroundColor: color };
-    console.log(note.style.backgroundColor);
-    noteService.saveNote(note, color);
+    console.log(note.info);
+    noteService.saveNote(note);
   };
 
   getNotes = () => {
     const { notes } = this.state;
     const { hover } = this.state;
     const { hoverId } = this.state;
-    console.log(hoverId);
+    if(!notes || notes.length === 0) return <h2>No notes</h2>
     return notes.map((note) => {
-      console.log(note);
       return !note.isPinned ? (
         <div
-          contentEditable="true"
+          contentEditable={(note.type === 'txt' || note.type === 'todos') ? 'true' : 'false'}
+          suppressContentEditableWarning='true'
           onFocus={() => this.handleFocus(note)}
           onKeyUp={this.handleKey}
           onBlur={() => this.onSaveNote(note)}
@@ -192,7 +196,7 @@ export class MissKeep extends React.Component {
           style={note.style}
           onMouseEnter={() => this.hover(note.id)}
           onMouseLeave={() => this.hover("")}
-          className="note"
+          className={`note ${note.type}`}
         >
           <NotePreview note={note} />
           <div
@@ -239,7 +243,8 @@ export class MissKeep extends React.Component {
     return notes.map((note) => {
       return note.isPinned ? (
         <div
-          contentEditable="true"
+        contentEditable={(note.type === 'txt' || note.type === 'todos') ? 'true' : 'false'}
+          suppressContentEditableWarning='true'
           onFocus={() => this.handleFocus(note)}
           onKeyUp={this.handleKey}
           onBlur={() => this.onSaveNote(note)}
@@ -293,9 +298,9 @@ export class MissKeep extends React.Component {
   };
 
   render() {
-    console.log(123);
+    
     const { notes } = this.state;
-    console.log(this.state.note.info);
+    
 
     if (!notes || notes.length === 0) {
       return (
