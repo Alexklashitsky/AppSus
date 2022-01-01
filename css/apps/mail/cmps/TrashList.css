@@ -1,0 +1,9 @@
+.trash-list{
+    flex-direction: column;
+
+}
+
+
+.trash-list.shown{
+    border: hotpink solid;
+}

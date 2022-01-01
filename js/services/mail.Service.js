@@ -9,7 +9,9 @@ export const mailService = {
     sendMail,
     getMailByIdN,
     moveToFolder,
-    getTrash
+    getTrash,
+    getFolder
+
 
 }
 
@@ -178,12 +180,18 @@ function _getFilteredMails(mails, filterBy) {
     })
 }
 
+function getFolder() {
+    console.log('gFolder:', gFolder);
+
+    return gFolder
+}
+
 function getTrash() {
     const mails = _loadMailsFormStorage()
     let trashMail = mails.filter(mail => {
         return mail.currentFolder === 'trash'
     })
-    console.log('trashMail:', trashMail);
+    // console.log('trashMail:', trashMail);
     return trashMail
 
 }
