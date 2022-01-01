@@ -35,7 +35,6 @@ export class MissKeep extends React.Component {
 
   addNote = (ev) => {
     const { type } = this.state.note.info;
-    console.log(type);
     ev.preventDefault();
     noteService.createNote(this.state.note);
     //   .then(() =>
@@ -49,7 +48,6 @@ export class MissKeep extends React.Component {
 
   changeType = (type) => {
     this.setState((prevState) => ({ note: { ...prevState.note, type: type } }));
-    console.log(this.state.note.type);
   };
 
   resetForm = () => {
@@ -137,14 +135,12 @@ export class MissKeep extends React.Component {
 
   hover = (id) => {
     //   let hover = this.state.hover ? false : true;
-    //   console.log(hover);
     let hoverId = id;
     this.setState({ hoverId });
   };
 
   handleKey = ({ key }) => {
     var { noteEdit } = this.state;
-    console.log(noteEdit);
 
     if (key.length === 1) {
       noteEdit += key;
@@ -152,14 +148,12 @@ export class MissKeep extends React.Component {
     } else if (key === "Backspace") {
       let length = noteEdit.length;
       noteEdit = noteEdit.substring(0, length - 1);
-      console.log(noteEdit);
       this.setState({ noteEdit });
     }
   };
 
   handleFocus = (note) => {
     if(note.type === 'src' || note.type === 'img') return;
-    console.log(123);
     const noteEdit =
       note.type === "txt" ? note.info.txt : note.info.todos.toString();
     this.setState({ noteEdit });
@@ -169,13 +163,11 @@ export class MissKeep extends React.Component {
     let type = note.type;
     if(type === 'txt' || type === 'todos') note.info[type] = this.state.noteEdit;
     if(type === 'todos') note.info[type] = note.info[type].split(',');
-    // else note.info[type] = this.state.noteEdit;
     noteService.saveNote(note);
   };
 
   onChangecolor = (note, color) => {
     note.style = { backgroundColor: color };
-    console.log(note.info);
     noteService.saveNote(note);
   };
 

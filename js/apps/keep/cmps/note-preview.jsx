@@ -18,7 +18,7 @@ function checkNote(note) {
       );
 
     case "todos":
-      //   console.log(note.info.todos);
+  
       return (
         <React.Fragment>
           <h2>{note.info.title}</h2>

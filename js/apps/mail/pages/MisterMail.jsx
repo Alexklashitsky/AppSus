@@ -40,7 +40,7 @@ export class MisterMail extends React.Component {
         })
     }
     onSetFilter = (filterBy) => {
-        console.log(filterBy);
+        // console.log(filterBy);
         this.setState({ filterBy }, this.loadMails)
 
     }
@@ -54,11 +54,11 @@ export class MisterMail extends React.Component {
     isTrashShown = () => {
         if (mailService.getFolder() === 'trash') {
             this.setState({ trashIsShown: true })
-            console.log('true');
+            // console.log('true');
         }
         else {
             this.setState({ trashIsShown: false })
-            console.log('false');
+            // console.log('false');
         }
         // console.log('this.state:', this.state);
 
@@ -67,7 +67,7 @@ export class MisterMail extends React.Component {
 
     setFolder = (folder) => {
         this.setState({ folder }, this.loadMails())
-        console.log('this.state:', this.state);
+        // console.log('this.state:', this.state);
         this.loadMails()
     }
 
@@ -89,7 +89,7 @@ export class MisterMail extends React.Component {
     }
 
     componentWillUnmount() {
-        console.log('main unmount');
+        // console.log('main unmount');
     }
 
     render() {
