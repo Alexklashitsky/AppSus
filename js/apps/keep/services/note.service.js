@@ -4,7 +4,9 @@ import { utilService } from '../../../services/util.service.js';
 export const noteService = {
     createNote,
     getNotesToShow,
-    deleteNote
+    deleteNote,
+    togglePinNote,
+    saveNote
 }
 
 
@@ -16,7 +18,7 @@ function createNote({ type, info }) {
         isPinned: false,
         info,
         style: {
-            backgroundColor: '#00d'
+            backgroundColor: '#fff'
         }
     }
 
@@ -50,6 +52,24 @@ function deleteNote(id){
     save(notes);
 }
 
+function togglePinNote(id){
+    const notes = load();
+    const idx = notes.findIndex(note => note.id === id);
+    notes[idx].isPinned = (notes[idx].isPinned) ? false : true; 
+    console.log(notes[idx])
+    save(notes);
+    return Promise.resolve();
+}
+
+function saveNote(note){
+    const notes = load();
+    const idx = notes.findIndex(el => el.id === note.id);
+    notes[idx].info = note.info;
+    console.log(notes[idx])
+    notes[idx].style = note.style;
+
+    save(notes);
+}
 
 
 
