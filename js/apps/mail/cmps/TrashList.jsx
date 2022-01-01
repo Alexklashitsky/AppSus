@@ -17,8 +17,9 @@ export function TrashList({ mails }) {
         //     {trashMail.map(mail => <MailPreviewForTrash key={mail.id} mail={mail} />)}
 
         // </section>
-
-        <MailPreviewForTrash />
+        <section className="trash-list flex">
+            <MailPreviewForTrash />
+        </section>
     )
 
 }

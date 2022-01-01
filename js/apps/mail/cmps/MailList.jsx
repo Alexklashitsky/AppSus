@@ -7,7 +7,7 @@ export function MailsList({ mails }) {
 
     return (
         <section className="mail-list flex">
-            {mails.map(mail => <MailPreview key={mail.id} mail={mail} />)}
+            <tr>{mails.map(mail => <MailPreview key={mail.id} mail={mail} />)}</tr>
         </section>
     )
 

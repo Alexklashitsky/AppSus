@@ -3,7 +3,30 @@
 
 }
 
+.trash-list{
+    /* border: teal dotted; */
+    flex-direction: column;
+    padding-left: 10%;
+    margin-top: 5%;
+    width: 70%;
 
-.trash-list.shown{
-    border: hotpink solid;
 }
+
+.trash-preview{
+    /* border: springgreen solid; */
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 2rem;
+    
+}
+
+.trash-preview .from{
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+.trash-preview .bodyPreview{
+    
+    padding-left: 3rem;
+}
+

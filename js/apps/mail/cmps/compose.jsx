@@ -103,7 +103,7 @@ export class Compose extends React.Component {
     openReplay(id) {
         // eventBusService.on('replay', () => {
         let selectedMail = mailService.getMailByIdN(id)
-        this.setState({ mail: { to: selectedMail.from, subject: selectedMail.subject, body: selectedMail.body } })
+        this.setState({ mail: { to: selectedMail.from, subject: 'replay' + ' ' + selectedMail.subject, body: selectedMail.body } })
 
 
         // mailService.getMailById(id).then(selectedMail, selectedMail = 'rerror')
@@ -176,13 +176,19 @@ export class Compose extends React.Component {
                 </div>
                 <form className="body">
                     <label htmlFor="body"></label>
-                    <input type="text"
+                    {/* <input type="text"
                         placeholder=""
                         id="body"
                         name="body"
                         value={body}
                         onChange={this.handleChange}
-                    />
+                    /> */}
+
+                    <textarea id="body" name="body" value={body} rows="7" cols="50"
+                        onChange={this.handleChange}>
+
+                    </textarea>
+
                 </form>
                 <button onClick={
                     () => this.onSubmitMail()

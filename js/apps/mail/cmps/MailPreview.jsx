@@ -6,9 +6,9 @@ export function MailPreview({ mail }) {
     return (
         <Link className="clean-link" to={`/mail/${mail.id}`}>
             <article className="mail-preview flex">
-                <div className="from">{mail.from}</div>
-                <div className="subject">{mail.subject}</div>
-                <div className="bodyPreview">{mail.bodyPreview}</div>
+                <td className="from">  {mail.from}</td>
+                <td className="subject"> {mail.subject}</td>
+                <td className="bodyPreview"> {mail.bodyPreview}</td>
 
 
 

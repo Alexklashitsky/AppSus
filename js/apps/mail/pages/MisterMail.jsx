@@ -60,7 +60,7 @@ export class MisterMail extends React.Component {
             this.setState({ trashIsShown: false })
             console.log('false');
         }
-        console.log('this.state:', this.state);
+        // console.log('this.state:', this.state);
 
 
     }
