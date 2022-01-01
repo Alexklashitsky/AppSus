@@ -16,6 +16,12 @@
     width: 5rem;
 }
 
+.amount.of.mails{
+    color: rgb(18, 124, 23);
+    font-size: 1.5rem;
+    padding-left: 2rem;
+}
+
 .compose{
 font-size: 1.2rem;
 color: rgb(64, 95, 34);
@@ -26,3 +32,4 @@ cursor: pointer;
     height: 1.75rem;
     
 }
+

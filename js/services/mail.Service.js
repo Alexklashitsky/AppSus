@@ -11,8 +11,8 @@ export const mailService = {
     moveToFolder,
     getTrash,
     getFolder,
-    deleteMail
-
+    deleteMail,
+    amountOfMailCurrFolder
 
 }
 
@@ -22,6 +22,8 @@ const loggedInUser = {
     fullName: 'puki ben react'
 }
 let gFolder = 'inbox'
+
+
 
 function sendMail(mail) {
 
@@ -185,6 +187,16 @@ function _createDemoMails() {
     _savaMailsToStorage(mails)
 }
 
+function amountOfMailCurrFolder() {
+
+    let mails = _loadMailsFormStorage()
+    mails = mails.filter(mail => {
+        return (mail.currentFolder === gFolder)
+    })
+    return mails.length
+
+}
+
 function _getFilteredMails(mails, filterBy) {
     console.log('filterBy:', filterBy);
 
@@ -240,6 +252,8 @@ function setFolder(folder) {
     // })
 
 }
+
+
 
 function moveToFolder(folder, id) {
     let mails = _loadMailsFormStorage()
