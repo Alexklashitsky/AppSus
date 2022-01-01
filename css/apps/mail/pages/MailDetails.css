@@ -8,6 +8,20 @@
     justify-content: space-between
     
 }
+.mail-details .search-bar{
+    padding-bottom: 5%;
+}
+
+.mail-details .subject{
+    padding-left: 15%;
+}
+
+.mail-details .main{
+    display: flex;
+}
+.mail-details .txt{
+    padding-left: 5%;
+}
 
 .mail-details .modal{
     height: 16rem;
@@ -16,14 +30,14 @@
     /* border: tomato solid; */
     float: right;
     position:absolute;
-    top: 15%; 
-    right: -100%;
+    top: 25%; 
+    right: 0%;
+    display: none;
 
     
-    /* visibility: hidden */
 }
 .mail-details .modal.shown{
-    right:  0px;
+    display: flex;
 
    
     

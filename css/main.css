@@ -26,8 +26,12 @@
 
 /* MAIL CMPS */
 @import '/css/apps/mail/cmps/MailPreview.css';
+@import '/css/apps/mail/cmps/MailFolders.css';
+@import '/css/apps/mail/cmps/Compose.css';
+@import '/css/apps/mail/cmps/TrashList.css';
 
 /* MAIL PAGES */
+@import '/css/apps/mail/pages/MisterMail.css';
 @import '/css/apps/mail/pages/MailDetails.css';
 
 

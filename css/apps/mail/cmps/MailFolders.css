@@ -1,3 +1,5 @@
 .mail-folders{
-    border: hotpink solid;
+    /* border: hotpink solid; */
+    flex-direction: column;
+    width: 8%;
 }

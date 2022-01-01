@@ -4,7 +4,15 @@ import { storageService } from "./storage.service.js"
 export const mailService = {
     creteMails,
     query,
-    getMailById
+    getMailById,
+    setFolder,
+    sendMail,
+    getMailByIdN,
+    moveToFolder,
+    getTrash,
+    getFolder
+
+
 }
 
 const KEY = 'mailDB'
@@ -12,10 +20,23 @@ const loggedInUser = {
     email: 'puki@appsus.com',
     fullName: 'puki ben react'
 }
+let gFolder = 'inbox'
+
+function sendMail(mail) {
+
+    const mails = _loadMailsFormStorage()
+
+    const sentMail = _createMail(loggedInUser.fullName, mail.subject, mail.body, Date.now(), mail.to, 'sent items')
+    console.log('sentMail:', sentMail);
+    mails.push(sentMail)
+    console.log('mails:', mails);
+    _savaMailsToStorage(mails)
 
 
 
-function _createMail(from, subject, body, sentAt, to) {
+}
+
+function _createMail(from, subject, body, sentAt, to, currentFolder = 'inbox') {
     const mail = {
         id: utilService.makeId(),
         from,
@@ -26,7 +47,7 @@ function _createMail(from, subject, body, sentAt, to) {
         sentAt,
         to,
         isInTrash: false,
-        currentFolder: 'inbox'
+        currentFolder
     }
     return mail
 }
@@ -96,6 +117,16 @@ function getMailById(mailId) {
 
 }
 
+function getMailByIdN(mailId) {
+    const mails = _loadMailsFormStorage()
+    var mail = mails.find(function (mail) {
+        return mailId === mail.id
+    })
+    return mail
+}
+
+
+
 function _createDemoMails() {
     const mail1 = _createMail('muki', 'The', utilService.makeLorem(), '1639993636000', 'puki@appsus.com')
     const mail2 = _createMail('fofo', 'Most', utilService.makeLorem(), '1639820836000', 'puki@appsus.com')
@@ -125,13 +156,77 @@ function _createDemoMails() {
 }
 
 function _getFilteredMails(mails, filterBy) {
-    let { from, to, date } = filterBy
+    console.log('filterBy:', filterBy);
+
+    let folder = filterBy.folder
+    let from = filterBy.search
+    let to = from
+    let subject = from
+    console.log('subject:', subject);
+
+    console.log('folder:', folder);
+
+
+
     from = from ? from : null
     to = to ? to : null
+    // subject = subject ? subject : null
+    // folder = folder ? folder : null
+    let test
     return mails.filter(mail => {
-        return mail.to.includes(to) && mail.from.includes(from)
+        console.log('mail.subject:', mail.subject);
+
+        return (mail.subject.includes(subject) || mail.to.includes(to) || mail.from.includes(from)) && mail.currentFolder === gFolder
     })
 }
+
+function getFolder() {
+    console.log('gFolder:', gFolder);
+
+    return gFolder
+}
+
+function getTrash() {
+    const mails = _loadMailsFormStorage()
+    let trashMail = mails.filter(mail => {
+        return mail.currentFolder === 'trash'
+    })
+    // console.log('trashMail:', trashMail);
+    return trashMail
+
+}
+function setFolder(folder) {
+
+
+    gFolder = folder
+    console.log('gFolder:', gFolder);
+
+
+
+    // return mails.filter(mail => {
+    // console.log('mail.subject:', mail.subject);
+
+    // return (mail.currentFolder === folder)
+    // })
+
+}
+
+function moveToFolder(folder, id) {
+    let mails = _loadMailsFormStorage()
+    let mailIdx = mails.findIndex(function (mail) {
+        return id === mail.id;
+    })
+    mails[mailIdx].currentFolder = folder
+    _savaMailsToStorage(mails)
+    console.log('mailIdx:', mailIdx);
+
+
+
+
+
+
+}
+
 
 function _savaMailsToStorage(mails) {
     storageService.saveToStorage(KEY, mails)
