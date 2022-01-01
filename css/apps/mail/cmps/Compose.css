@@ -38,9 +38,10 @@ button{
     
 }
 
-
-
-
+ label{
+/* border: springgreen solid;
+font-size: ;  */
+ }
 
 .compose-modal input[id=subject]{
     

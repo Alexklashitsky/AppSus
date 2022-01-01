@@ -160,9 +160,9 @@ export class Compose extends React.Component {
                         />
                     </form>
                     <form className="subject">
-                        <label htmlFor="subject">subject</label>
+                        <label htmlFor="subject"></label>
                         <input type="text"
-                            placeholder=""
+                            placeholder="subject"
                             id="subject"
                             name="subject"
                             value={subject}
@@ -182,7 +182,7 @@ export class Compose extends React.Component {
                         onChange={this.handleChange}
                     /> */}
 
-                    <textarea id="body" name="body" value={body} rows="16" cols="50"
+                    <textarea id="body" name="body" value={body} rows="15" cols="45"
                         onChange={this.handleChange}>
 
                     </textarea>

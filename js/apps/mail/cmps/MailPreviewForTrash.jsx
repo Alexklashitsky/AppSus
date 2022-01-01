@@ -19,9 +19,9 @@ export class MailPreviewForTrash extends React.Component {
         // console.log('mails:', mails);
 
 
-        this.setState(({ mails }),
+        this.setState(({ mails }))
 
-            // () => console.log('this.state:', this.state))
+        // () => console.log('this.state:', this.state))
         // console.log('this.state:', this.state);
 
     }
