@@ -87,7 +87,6 @@ export class Compose extends React.Component {
 
 
     closeModal = () => {
-        console.log('hi');
         this.setState({ isModalOpen: false })
 
     }
@@ -148,6 +147,7 @@ export class Compose extends React.Component {
             <section className={"compose-modal" + "  " + `${this.state.isModalOpen ? " show" : ""}`} >
                 <header>
                     <h3>New massage</h3>
+                    <button onClick={() => this.closeModal()} className="close-modal">X</button>
                 </header>
                 <div className="subheader flex">
                     <form

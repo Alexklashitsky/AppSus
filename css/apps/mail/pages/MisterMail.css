@@ -1,5 +1,6 @@
 .mister-mail{
-    /* border: springgreen solid; */
+    padding-left: 3%;
+    padding-right: 3%;
 
 }
 
@@ -13,4 +14,15 @@
 }
 .mister-mail .btn{
     width: 5rem;
+}
+
+.compose{
+font-size: 1.2rem;
+color: rgb(64, 95, 34);
+cursor: pointer;
+}
+
+#search{
+    height: 1.75rem;
+    
 }

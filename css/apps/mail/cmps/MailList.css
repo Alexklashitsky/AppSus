@@ -5,17 +5,58 @@
 
 }
 
-  tr{
-    border: springgreen solid;
+.mail-list table{
+    
+    padding-left: 5%;
+    width: 100vw;
+     white-space: nowrap; 
 }
 
 
 .mail-list td {
     text-align: center;
+    border-bottom: 1px solid gray;
+
   }
 
   .mail-list .from{
       color: gray;
      font-size: 1.2rem;
+     white-space: nowrap;
+     width: 20rem;
   
+     
   }
+
+  .mail-list .subject{
+    color: gray;
+   font-size: 1.2rem;
+   font-weight: bolder;
+   white-space: nowrap;
+   
+
+ 
+}
+
+.mail-list .bodyPreview{
+    color: rgb(39, 36, 36);
+   font-size: 1.0rem;
+   font-weight: bolder;
+   width: 100%;
+   padding-right: 25rem;
+ 
+}
+
+
+
+  
+
+  /* td {
+    border: 1px solid black;
+    overflow: hidden;
+    /* white-space: nowrap; */
+    /* text-overflow: ellipsis; */
+    text-indent: 2;
+    /* height: 20px; */
+
+ 

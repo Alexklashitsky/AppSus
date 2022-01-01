@@ -32,7 +32,7 @@ export class MailFolders extends React.Component {
             <section className="mail-folders flex">
                 <button className="btn" onClick={() => this.onClickFolder('inbox')} >inbox</button>
                 <button className="btn" onClick={() => this.onClickFolder('market')} >marked</button>
-                <button className="btn" onClick={() => this.onClickFolder('sent items')} >sent items</button>
+                <button className="btn" onClick={() => this.onClickFolder('sent items')} >sent</button>
                 <button className="btn" onClick={() => this.onClickFolder('impotent')} >impotent</button>
                 <button className="btn" onClick={() => this.onClickFolder('drafts')} >drafts</button>
                 <button className="btn" onClick={() => this.onClickFolder('spam')} >spam</button>

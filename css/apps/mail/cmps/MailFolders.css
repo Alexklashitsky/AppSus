@@ -1,5 +1,29 @@
 .mail-folders{
     /* border: hotpink solid; */
     flex-direction: column;
-    width: 8%;
+    width: 10%;
+    padding-right: 6rem;
+
 }
+
+.mail-folders section{
+   
+}
+
+
+.btn {
+    width: 100%;
+    background: rgb(207, 207, 2);
+    border: 1px solid rgb(207, 207, 2);;
+    font-size: 1.3rem;
+    color: #fff;
+    cursor: pointer;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0 5px;
+    user-select: none;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin: 3px;
+  }
