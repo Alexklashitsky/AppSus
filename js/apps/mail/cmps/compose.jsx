@@ -146,7 +146,7 @@ export class Compose extends React.Component {
         return (
             <section className={"compose-modal" + "  " + `${this.state.isModalOpen ? " show" : ""}`} >
                 <header>
-                    <h3>New massage</h3>
+                    <h3 className="newMsg" >New massage</h3>
                     <button onClick={() => this.closeModal()} className="close-modal">X</button>
                 </header>
                 <div className="subheader flex">
@@ -184,7 +184,7 @@ export class Compose extends React.Component {
                         onChange={this.handleChange}
                     /> */}
 
-                    <textarea id="body" name="body" value={body} rows="7" cols="50"
+                    <textarea id="body" name="body" value={body} rows="16" cols="50"
                         onChange={this.handleChange}>
 
                     </textarea>
