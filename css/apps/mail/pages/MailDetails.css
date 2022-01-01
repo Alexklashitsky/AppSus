@@ -22,9 +22,7 @@
     font-size: 1.5rem;
 }
 
-.mail-details from{
-font-size: 1.5;
-}
+
 
 .mail-details .main{
     display: flex;

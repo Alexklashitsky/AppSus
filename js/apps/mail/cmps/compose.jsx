@@ -133,6 +133,10 @@ export class Compose extends React.Component {
         this.setState({ isModalOpen: true })
     }
 
+    onDraft(id) {
+
+    }
+
     componentWillUnmount() {
         // this.removeEventBus()
         // window.removeEventListener('open modal', CustomEvent)
