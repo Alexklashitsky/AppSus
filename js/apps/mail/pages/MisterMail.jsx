@@ -26,18 +26,22 @@ export class MisterMail extends React.Component {
         })
         // eventBusService.on('open-folder', folder)
         // eventBusService.on('open-modal', onOpenModal())
+        this.mailCount()
 
 
 
     }
 
 
+
     loadMails = () => {
         const { filterBy } = this.state
         mailService.query(filterBy).then(mails => {
-            // eventBusService.emit('mail-count', mails.length)
-            this.setState({ mails })
+            this.setState({ mails }, () => console.log('this.state:', this.state))
+
         })
+
+
     }
     onSetFilter = (filterBy) => {
         // console.log(filterBy);
@@ -92,6 +96,18 @@ export class MisterMail extends React.Component {
         // console.log('main unmount');
     }
 
+    mailCount() {
+
+        let amountOfMail = mailService.amountOfMailCurrFolder()
+        console.log('amountOfMail:', amountOfMail);
+        return amountOfMail
+
+
+
+
+
+    }
+
     render() {
         const { mails } = this.state
         const test = '<MailsList mails={mails} />'
@@ -109,7 +125,9 @@ export class MisterMail extends React.Component {
                     <div className="search-bar flex" >
                         <MailFilter onSetFilter={this.onSetFilter} />
                         <button className="compose" onClick={() => this.onOpenModal()} >compose</button>
+                        <div className="amount of mails">amount of mails: {this.mailCount()} </div>
                     </div>
+
                     <main className="main flex">
                         <div className="mail-folders">
                             <  MailFolders setFolder={this.setFolder} />
@@ -124,6 +142,8 @@ export class MisterMail extends React.Component {
                 <div className="search-bar flex" >
                     <MailFilter onSetFilter={this.onSetFilter} />
                     <button className="compose" onClick={() => this.onOpenModal()} >compose</button>
+                    <div className="amount of mails">amout of mails: {this.mailCount()} </div>
+
                 </div>
                 <main className="main flex">
                     <div className="mail-folders">
