@@ -1,6 +1,6 @@
-import { MailPreview } from "./MailPreview.jsx";
+
 import { mailService } from "../../../services/mail.Service.js";
-import { eventBusService } from "../../../services/event-bus.service.js";
+
 import { MailPreviewForTrash } from "./MailPreviewForTrash.jsx";
 
 export function TrashList({ mails }) {

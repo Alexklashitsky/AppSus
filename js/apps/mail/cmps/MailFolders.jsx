@@ -16,12 +16,20 @@ export class MailFolders extends React.Component {
         if (folder === 'trash') {
             // console.log('trash');
             eventBusService.emit('open-trash', true)
+            eventBusService.emit('open-sentItems', false)
 
         }
-        else eventBusService.emit('open-trash', false)
+        else if (folder === 'sent items') {
+            eventBusService.emit('open-sentItems', true)
+            eventBusService.emit('open-trash', false)
+        }
+        else {
+            eventBusService.emit('open-sentItems', false)
+            eventBusService.emit('open-trash', false)
 
+        }
 
-
+        // open-sentItems
 
         // let test = folderName
         // console.log('test:', test);

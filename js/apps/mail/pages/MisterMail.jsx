@@ -5,6 +5,7 @@ import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailsList } from "../cmps/MailList.jsx"
 import { mailService } from "../../../services/mail.Service.js"
 import { TrashList } from "../cmps/TrashList.jsx"
+import { SentItemsList } from "../cmps/SentItemsList.jsx"
 // import { eventBusService } from "../services/event-bus.service"
 const { Link } = ReactRouterDOM
 export class MisterMail extends React.Component {
@@ -14,7 +15,8 @@ export class MisterMail extends React.Component {
         folder: 'inbox',
         filterBy: null,
         isModalShown: false,
-        trashIsShown: false
+        trashIsShown: false,
+        sentItemsIsShown: false,
 
     }
     componentDidMount() {
@@ -24,9 +26,14 @@ export class MisterMail extends React.Component {
         eventBusService.on('open-trash', () => {
             this.isTrashShown()
         })
+        eventBusService.on('open-sentItems', () => {
+            this.isSentItemsShown()
+        })
         // eventBusService.on('open-folder', folder)
         // eventBusService.on('open-modal', onOpenModal())
         this.mailCount()
+        console.log('this.state:', this.state.sentItemsIsShown);
+
 
 
 
@@ -58,16 +65,21 @@ export class MisterMail extends React.Component {
     isTrashShown = () => {
         if (mailService.getFolder() === 'trash') {
             this.setState({ trashIsShown: true })
-            // console.log('true');
         }
         else {
             this.setState({ trashIsShown: false })
-            // console.log('false');
         }
-        // console.log('this.state:', this.state);
-
-
     }
+
+    isSentItemsShown = () => {
+        if (mailService.getFolder() === 'sent items') {
+            this.setState({ sentItemsIsShown: true })
+        }
+        else {
+            this.setState({ sentItemsIsShown: false })
+        }
+    }
+
 
     setFolder = (folder) => {
         this.setState({ folder }, this.loadMails())
@@ -118,7 +130,46 @@ export class MisterMail extends React.Component {
 
         // console.log('this.state.mails:', this.state.mails)
         if (!mails) return <h2> empty</h2>
-        if (!this.state.trashIsShown) {
+        if (this.state.trashIsShown) {
+            return (
+                <section className="mister-mail">
+                    <div className="search-bar flex" >
+                        <MailFilter onSetFilter={this.onSetFilter} />
+                        <button className="compose" onClick={() => this.onOpenModal()} >compose</button>
+                        <div className="amount-of-mails">amout of mails: {this.mailCount()} </div>
+
+                    </div>
+                    <main className="main flex">
+                        <div className="mail-folders">
+                            <  MailFolders setFolder={this.setFolder} />
+                        </div>
+                        <TrashList mails={mails} />
+                        <Compose onSentMail={this.onSentMail} />
+                    </main>
+                </section>
+            )
+
+        }
+        else if (this.state.sentItemsIsShown)
+            return (
+
+                <section className="mister-mail">
+                    <div className="search-bar flex" >
+                        <MailFilter onSetFilter={this.onSetFilter} />
+                        <button className="compose" onClick={() => this.onOpenModal()} >compose</button>
+                        <div className="amount-of-mails">amount of mails: {this.mailCount()} </div>
+                    </div>
+
+                    <main className="main flex">
+                        <div className="mail-folders">
+                            <  MailFolders setFolder={this.setFolder} />
+                        </div>
+                        <SentItemsList />
+                        <Compose onSentMail={this.onSentMail} />
+                    </main>
+                </section>
+            )
+        else
             return (
 
                 <section className="mister-mail">
@@ -137,23 +188,9 @@ export class MisterMail extends React.Component {
                     </main>
                 </section>
             )
-        } else return (
-            <section className="mister-mail">
-                <div className="search-bar flex" >
-                    <MailFilter onSetFilter={this.onSetFilter} />
-                    <button className="compose" onClick={() => this.onOpenModal()} >compose</button>
-                    <div className="amount-of-mails">amout of mails: {this.mailCount()} </div>
-
-                </div>
-                <main className="main flex">
-                    <div className="mail-folders">
-                        <  MailFolders setFolder={this.setFolder} />
-                    </div>
-                    <TrashList mails={mails} />
-                    <Compose onSentMail={this.onSentMail} />
-                </main>
-            </section>
-        )
     }
 
 }
+
+
+
